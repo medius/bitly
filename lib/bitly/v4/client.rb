@@ -15,19 +15,32 @@ module Bitly
         return Bitly::V4::Url.new(self, response)
       end
 
+      def clicks(bitlink, opts={})
+        response = get("/bitlinks/#{bitlink}/clicks", opts)
+        return Bitly::V4::Clicks.new(self, response)
+      end
+
       private
 
       def timeout=(timeout=nil)
         self.class.default_timeout(timeout) if timeout
       end
 
+      def get(method, opts={})
+        request(:get, method, opts)
+      end
+
       def post(method, opts={})
+        request(:post, method, opts)
+      end
+
+      def request(http_method, method, opts={})
         opts[:headers] ||= {}
         opts[:headers]["Authorization"] = "Bearer #{@access_token}"
         opts[:headers]["Content-Type"] = "application/json"
 
         begin
-          response = self.class.post(method, opts)
+          response = self.class.send(http_method, method, opts)
         rescue Timeout::Error
           raise BitlyTimeout.new("Bitly didn't respond in time", "504")
         end

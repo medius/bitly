@@ -5,6 +5,7 @@ require 'oauth2'
 require 'bitly/v4/bitly'
 require 'bitly/v4/client'
 require 'bitly/v4/url'
+require 'bitly/v4/clicks'
 
 # Not implemented yet
 #require 'bitly/v4/referrer'
