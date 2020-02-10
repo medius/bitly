@@ -1,3 +1,5 @@
+require 'json'
+
 module Bitly
   def self.new(access_token, timeout=nil)
     Bitly::V4::Client.new(access_token, timeout)

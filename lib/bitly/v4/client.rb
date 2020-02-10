@@ -9,12 +9,14 @@ module Bitly
         @access_token = access_token
       end
 
+      # https://dev.bitly.com/v4/#operation/createBitlink
       def shorten(long_url, opts={})
         query = {body: { long_url: long_url }.merge(opts).to_json}
         response = post('/shorten', query)
         return Bitly::V4::Url.new(self, response)
       end
 
+      # https://dev.bitly.com/v4/#operation/getClicksForBitlink
       def clicks(bitlink, opts={})
         response = get("/bitlinks/#{bitlink}/clicks", opts)
         return Bitly::V4::Clicks.new(self, response)
