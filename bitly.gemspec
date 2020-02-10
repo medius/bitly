@@ -24,9 +24,8 @@ Gem::Specification.new do |spec|
   spec.rdoc_options           = ["--line-numbers", "--title", "Bitly", "--main", "README.md"]
   spec.extra_rdoc_files       = ["LICENSE.md", "README.md"]
 
-  spec.add_runtime_dependency "multi_json", "~> 1.3"
+  spec.add_runtime_dependency "json"
   spec.add_runtime_dependency "httparty", ">= 0.7.6"
-  spec.add_runtime_dependency "oauth2", "< 2.0", ">= 0.5.0"
   spec.add_runtime_dependency "rack", "<2" if RUBY_VERSION.to_f < 2.2
 
   spec.add_development_dependency "bundler"
