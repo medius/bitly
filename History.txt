@@ -2,6 +2,13 @@
 
 ...
 
+=== 2.0.0
+* Major breaking changes
+
+  * Drop support for Version 2 and Version 3 Bitly API
+  * Implemented V4 api shorten (https://github.com/philnash/bitly/pull/77/files) and clicks endpoints
+  * Removed all the code not directly being used in V4
+
 === 1.1.2
 
 * 2 minor updates
